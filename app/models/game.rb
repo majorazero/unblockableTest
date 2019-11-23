@@ -39,6 +39,10 @@ class Game < ApplicationRecord
 
      coordinate.update_attributes!(:status => 'hit')
 
+     #enemy response
+     player_coordinates = boards[1].coordinates.where.not(:status => 'hit')
+     player_coordinates[(player_coordinates.size*rand).round].update_attributes!(:status => 'hit')
+
      enemy_board.coordinates.where.not(:status => 'hit')
   end
 end
